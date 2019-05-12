@@ -42,6 +42,11 @@ FeatureVector <- as.character(FeatureVector$V2)
 Indexer <- sort(c(grep("mean[(]",FeatureVector), grep("std()",FeatureVector)))
 FeatureVector <- FeatureVector[Indexer]
 
+#Cleans up some of the variable naming
+FeatureVector <- gsub("-","",FeatureVector)
+FeatureVector <- gsub("mean", "Mean", FeatureVector)
+FeatureVector <- gsub("std", "Std", FeatureVector)
+
 
 #Add Variable names utilizing the Feature Vector
 TrainX <- select(TrainX, Indexer)
