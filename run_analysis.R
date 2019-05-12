@@ -46,6 +46,7 @@ FeatureVector <- FeatureVector[Indexer]
 FeatureVector <- gsub("-","",FeatureVector)
 FeatureVector <- gsub("mean", "Mean", FeatureVector)
 FeatureVector <- gsub("std", "Std", FeatureVector)
+FeatureVector <- gsub("[()]", "", FeatureVector)
 
 
 #Add Variable names utilizing the Feature Vector
@@ -71,4 +72,7 @@ TestFrame <- cbind(TestSubject, TestY, TestX)
 
 #Combine Training and Test Data
 OverallFrame <- arrange(rbind(TrainFrame,TestFrame), SubjectID)
+
+#Create an independent Frame that measure mean of each variable for each subject/activity
+MeanSummary <- group_by(OverallFrame, SubjectID, Activity) %>% summarize_all(mean)
 
