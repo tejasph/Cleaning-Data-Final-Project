@@ -5,26 +5,20 @@ date: "May 9, 2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Variables in the Script:
 
-## R Markdown
+TrainX/TrainY - contain data tables for TrainX.txt and TrainY.txt, respectively
+TestX/TestY - contain data tables for TestX.txt and TestY.txt, respectively
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+TrainSubject- vector containing SubjectIDs
+FeatureVector- vector containing the list of variable names pertaining to the TrainX/TrainY dataset.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Indexer - vector containing the positions of "mean()" and "std()" measurements. This variable is used when selecting the columns of focus in this project
 
-```{r cars}
-summary(cars)
-```
+TrainFrame - Data table that combines TrainSubject, TrainX, and TrainY together
+TestFrame - Data table that combines TrainSubject, TestX, and TestY together
+OverallFrame - Data table that combines TrainFrame and TestFrame
 
-## Including Plots
+MeanSummary - The OverallFrame data table that has been grouped by SubjectID and Actitivity, followed by a computation of the mean in each grouping. 
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
